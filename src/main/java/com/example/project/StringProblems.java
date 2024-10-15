@@ -8,9 +8,17 @@ public class StringProblems{
     // endsLy("oddly") → true
     // endsLy("y") → false
     // endsLy("oddy") → false
-    public boolean endsLy(String x){
-            //implement code here
-        return false;
+    public boolean endsLy(String x)
+    {
+        if (x.length() <= 2)
+        {
+            return false;
+        }
+        else 
+        {
+            return x.substring(x.length() - 2).equals("ly");
+        }
+        
     }
 
 
@@ -20,9 +28,25 @@ public class StringProblems{
     // conCat("abc", "cat") → "abcat"
     // conCat("dog", "cat") → "dogcat"
     // conCat("abc", "") → "abc"
-    public String conCat(String s1, String s2){
+    public String conCat(String s1, String s2)
+    {
+       if (s1.isEmpty() || s2.isEmpty())
+       {
+        return s1 + s2;
+       }
+       String last = s1.substring(s1.length() - 1);
+       String first = s2.substring(0,1);
+       
+       if (first.equals(last))
+       {
+        return (s1.substring(0, s1.length() - 1)) + s2;
+       }
+       else 
+       {
+        return s1 + s2;
+       }
         //implement code here
-        return "";
+      
     }
 
     // Given a string, return a version without the first 2 chars. 
@@ -33,9 +57,26 @@ public class StringProblems{
     // deFront("away") → "aay"
     // deFront("aapple") -> "apple"
     // deFront("abeep") -> "abeep"
-    public String deFront(String s1){
+    public String deFront(String s1)
+    {
+        if (s1.substring(0,1).equals("a") && s1.substring(1,2).equals("b"))
+        {
+            return s1;
+        }
+        else if (s1.substring(0,1).equals("a"))
+        {
+            return s1.substring(0,1) + s1.substring(2);
+        }
+        else if (s1.substring(1,2).equals("b"))
+        {
+            return s1.substring(1);
+        }
+        else 
+        {
+            return s1.substring(2);
+        }
         //implement code here
-        return "";
+        
     }
 
     
@@ -45,8 +86,24 @@ public class StringProblems{
     // withoutX("xHix") → "Hi"
     // withoutX("xHi") → "Hi"
     // withoutX("Hxix") → "Hxi"
-    public String withoutX(String s1){
-        return "";
+    public String withoutX(String s1)
+    {
+        String first = s1.substring(0,1);
+        String last = s1.substring(s1.length() - 1);
+
+       if (first.equals("x") && last.equals("x"))
+       {
+        return s1.substring(1, s1.length() - 1);
+       }
+       if (first.equals("x"))
+       {
+        return s1.substring(1);
+       }
+       if (last.equals("x"))
+       {
+        return s1.substring(0, s1.length() - 1);
+       }
+       return s1;
     }
 
     // Given a string str, if the string starts with "f" return "Fizz".
@@ -56,8 +113,28 @@ public class StringProblems{
     // fizzString("fig") → "Fizz"
     // fizzString("dib") → "Buzz"
     // fizzString("fib") → "FizzBuzz"
-    public String fizzString(String s1){
-        return "";
+    public String fizzString(String s1)
+    {
+      String first = s1.substring(0, 1);
+      String last = s1.substring(s1.length() - 1);
+
+      if (first.equals("f") || last.equals("b"))
+      {
+        if (first.equals("f") && last.equals("b"))
+        {
+            return "FizzBuzz";
+        }
+        if (first.equals("f"))
+        {
+            return "Fizz";
+        }
+        if (last.equals("b"))
+        {
+            return "Buzz";
+        }
+      }
+      return s1;
+      
     }
 
     // Given an int n, return the string form of the number followed 
@@ -69,7 +146,24 @@ public class StringProblems{
     // fizzString2(1) → "1!"
     // fizzString2(2) → "2!"
     // fizzString2(3) → "Fizz!"
-    public String fizzString2(int x){
-        return "";
+    public String fizzString2(int x)
+    {
+        if (x % 5 == 0 && x % 3 == 0)
+        {
+            return "FizzBuzz!";
+        }
+         if (x % 5 == 0)
+        {
+            return "Buzz!";
+        }
+         if (x % 3 == 0)
+        {
+            return "Fizz!";
+        }
+    
+        
+            return x + "!";
+        
+      
     }
 }
